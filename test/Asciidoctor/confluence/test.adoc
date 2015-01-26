@@ -1,0 +1,8 @@
+= Hello (Ascii)Doc(umentation)
+
+Hey I've just published Asciidoctor into Confluence
+
+This is a list:
+
+* item 1
+* item 2

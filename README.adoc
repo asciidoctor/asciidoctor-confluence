@@ -1,0 +1,54 @@
+= Asciidoctor-Confluence 0.0.1
+
+Asciidoctor-confluence is a ruby gem that takes Asciidoc files, parse them using https://github.com/asciidoctor/asciidoctor[Asciidoctor] and push the result into https://www.atlassian.com/software/confluence[Confluence].
+This gem currently supports Asciidoctor 1.5.2.
+
+
+== How to use it ?
+
+First you need to download and install the gem
+
+[source, ruby]
+----
+gem install asciidoctor-confluence
+----
+
+Then to create a page
+
+[source]
+----
+asciidoctor-confluence --host HOSTNAME --spaceKey SPACEKEY --title TITLE --username USERNAME --password PASSWORD file.adoc
+----
+
+Here is the list of arguments that can used with this gem
+
+.Table title
+|===
+|Argument | Is mandatory | Role | Example
+
+|host
+|yes
+|The hostname of the Confluence instance
+|http://confluence.mydomain/
+
+|spaceKey
+|yes
+|The space wihtin the page will be created
+|'AS' in http://confluence.mydomain/display/AS/
+
+|title
+|yes
+|The title of the Confluence page 
+|
+
+|username
+|no
+|The username to use if the page has write restrictions
+|
+
+|password
+|no
+|The password associated to the account used to login into Confluence
+|
+
+|===

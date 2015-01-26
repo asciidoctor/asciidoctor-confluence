@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require 'rubygems' if RUBY_VERSION < '1.9'
+require File.join File.dirname(__FILE__), '../lib/asciidoctor/confluence/invoker'
+
+result_code = Asciidoctor::Confluence::Invoker.invoke ARGV
+exit result_code

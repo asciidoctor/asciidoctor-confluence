@@ -37,10 +37,10 @@ module Asciidoctor
           url = response_body['_links']['base']+response_body['_links']['webui']
 
           $stdout.puts SUCCESSFUL_RESULT + url
-          return 0
+          0
         else
           $stderr.puts response_body['message']
-          return 1
+          1
         end
       end
     end

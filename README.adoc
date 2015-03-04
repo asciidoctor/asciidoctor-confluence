@@ -1,8 +1,12 @@
-= Asciidoctor-Confluence 0.0.1
+:version: 0.0.1
+:asciidoctor-base-version: 1.5.2
+:confluence-version: 5.x
+
+= Asciidoctor-Confluence {version}
 
 Asciidoctor-confluence is a ruby gem that takes Asciidoc files, parse them using https://github.com/asciidoctor/asciidoctor[Asciidoctor] and push the result into https://www.atlassian.com/software/confluence[Confluence].
-This gem currently supports Asciidoctor 1.5.2.
-
+This gem currently supports Asciidoctor {asciidoctor-base-version} +
+This gem is compatible with Confluence {confluence-version}
 
 == How to use it ?
 
@@ -22,7 +26,7 @@ asciidoctor-confluence --host HOSTNAME --spaceKey SPACEKEY --title TITLE --usern
 
 Here is the list of arguments that can used with this gem
 
-.Table title
+.Gem parameters
 |===
 |Argument | Is mandatory | Role | Example
 
@@ -52,3 +56,16 @@ Here is the list of arguments that can used with this gem
 |
 
 |===
+
+
+== Want to try it ?
+
+If you want to try asciidoctor-confluence you need to
+
+. Install the gem locally (at the moment it has not been publish to rubygem)
+.. Clone the github repository locally `git clone https://github.com/gscheibel/asciidoctor-confluence.git`
+.. Built it `gem build asciidoctor-confluence.gemspec`
+.. Install it `gem install ./asciidoctor-confluence.{version}.gem`
+.. To check it has been done correctly `asciidoctor-confluence -v` should display `asciidoctor-confluence: {version}`
+. Have a Confluence instance
+.. If you don't have a Confluence server, you can use a Docker container (e.i.: https://registry.hub.docker.com/u/cptactionhank/atlassian-confluence/), the option requires therefore an Atlassian account so it can generate a trial licence key.

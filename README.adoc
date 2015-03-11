@@ -24,6 +24,14 @@ Then to create a page
 asciidoctor-confluence --host HOSTNAME --spaceKey SPACEKEY --title TITLE --username USERNAME --password PASSWORD file.adoc
 ----
 
+To update a page
+[source]
+----
+asciidoctor-confluence --host HOSTNAME --spaceKey SPACEKEY --title TITLE --username USERNAME --password PASSWORD --update file.adoc
+#or
+asciidoctor-confluence --host HOSTNAME --spaceKey SPACEKEY --title TITLE --username USERNAME --password PASSWORD --update --pageid PAGEID file.adoc
+----
+
 Here is the list of arguments that can used with this gem
 
 .Gem parameters
@@ -55,6 +63,15 @@ Here is the list of arguments that can used with this gem
 |The password associated to the account used to login into Confluence
 |
 
+|update
+|false
+|Indicate that the page must be updated instead of created. No values are required for this option
+|
+
+|pageid
+|no
+|The ID of the page you want to update, if it's not provided it will be determined using the space key and the title
+|
 |===
 
 

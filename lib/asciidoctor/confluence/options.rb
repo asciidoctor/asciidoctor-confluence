@@ -12,7 +12,7 @@ module Asciidoctor
 
       def initialize(options = {})
         super options
-        self[:confluence] = options[:confluence] || {}
+        self[:confluence] = options[:confluence] || {:update => false}
         self[:confluence][:auth] = {} if self[:confluence][:auth].nil?
       end
 
@@ -44,6 +44,14 @@ Usage: asciidoctor-confluence --host HOSTNAME --spaceKey SPACEKEY --title TITLE 
 
           opts.on('--title TITLE', 'the title of the Confluence page') do |title|
             self[:confluence][:title] = title
+          end
+
+          opts.on('--pageid PAGEID', 'the id of the page to update') do |page_id|
+            self[:confluence][:page_id] = page_id
+            end
+
+          opts.on('--update', 'indicate that the page must be updated instead of created') do
+            self[:confluence][:update] = true
           end
 
           opts.on('--username USERNAME', 'the username used if credential are need to create the page') do |spaceKey|

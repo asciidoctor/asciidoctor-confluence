@@ -1,4 +1,4 @@
-:version: 0.0.1
+:version: 0.0.2
 :asciidoctor-base-version: 1.5.2
 :confluence-version: 5.x
 
@@ -77,7 +77,11 @@ Here is the list of arguments that can used with this gem
 
 == Want to try it ?
 
-If you want to try asciidoctor-confluence you need to
+If you want to try asciidoctor-confluence you can either download the gem:
+[source]
+gem install asciidoctor-confluence
+
+Or install from the source
 
 . Install the gem locally (at the moment it has not been publish to rubygem)
 .. Clone the github repository locally `git clone https://github.com/gscheibel/asciidoctor-confluence.git`

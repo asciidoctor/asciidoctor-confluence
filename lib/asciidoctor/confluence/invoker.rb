@@ -18,6 +18,8 @@ module Asciidoctor
           unless invoke_helper_or_version(args)
             publisher = Asciidoctor::Confluence::Publisher.new options
             publisher.publish
+          else
+            return 0
           end
         ensure
           $stderr = orig_stdout

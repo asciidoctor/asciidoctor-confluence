@@ -4,6 +4,7 @@ module Asciidoctor
 
       DEFAULT_CONTENT_TYPE = 'application/json'
       API_CONTENT = 'rest/api/content'
+      IMAGE_PREFIX = 'img src='
 
       attr_reader :url
       @page
@@ -17,8 +18,14 @@ module Asciidoctor
 
       def build_api_content_url(confluence_options)
         host = confluence_options[:host]
+        @host = confluence_options[:host]
         host = host + '/' unless confluence_options[:host].end_with?('/')
         host+ API_CONTENT
+      end
+
+      def with_basic_auth conn
+        conn.basic_auth(@auth[:username], @auth[:password]) unless @auth.nil?
+        conn
       end
 
       def create_connection
@@ -27,8 +34,7 @@ module Asciidoctor
           faraday.adapter Faraday.default_adapter
         end
 
-        conn.basic_auth(@auth[:username], @auth[:password]) unless @auth.nil?
-        conn
+        with_basic_auth conn
       end
 
       def create_or_update_page(update=false, page_id=nil)
@@ -68,8 +74,29 @@ module Asciidoctor
         end
       end
 
+      def upload_image(page_id, file_name)
+        conn = Faraday.new(url: @host, headers: {'X-Atlassian-Token'=> "nocheck"}) do |f|
+          f.request :multipart
+          f.request :url_encoded
+          f.adapter :net_http
+        end
+        with_basic_auth(conn).post "/#{API_CONTENT}/#{page_id}/child/attachment",
+          { file: Faraday::UploadIO.new(file_name, 'image/png') }
+      end
+
+      def each_uploaded_image(page_id)
+        @page.document.scan(/#{IMAGE_PREFIX}"([^\\\/"]+)"/).flatten.map do |file_name|
+          upload_image(page_id, file_name)
+          file_name
+        end
+      end
+
       def update_page(page_id, current_revision)
         @page.revision = current_revision.to_i+1
+
+        each_uploaded_image(page_id).each do |file_name|
+          @page.document.gsub!("#{IMAGE_PREFIX}\"#{file_name}\"", "#{IMAGE_PREFIX}\"/download/attachments/#{page_id}/#{file_name}?api=v2\"")
+        end
 
         conn = create_connection
         conn.put do |req|

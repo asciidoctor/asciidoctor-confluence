@@ -4,7 +4,7 @@ class Page
   REPRESENTATION = 'storage'
   @document
 
-  attr_reader :page_id, :title, :space_key
+  attr_reader :page_id, :title, :space_key, :document
   attr_writer :revision
 
   def initialize(space_key, title, document, page_id)

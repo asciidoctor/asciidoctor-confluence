@@ -50,6 +50,10 @@ Usage: asciidoctor-confluence --host HOSTNAME --spaceKey SPACEKEY --title TITLE 
             self[:confluence][:page_id] = page_id
             end
 
+          opts.on('--parentId PARENTID', 'the id of the parent to add the new page as a child') do |parent_id|
+            self[:confluence][:parent_id] = parent_id
+            end
+
           opts.on('--update', 'indicate that the page must be updated instead of created') do
             self[:confluence][:update] = true
           end

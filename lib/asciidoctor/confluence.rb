@@ -29,7 +29,7 @@ module Asciidoctor
 
       def publish
         document = Asciidoctor.convert_file @input_file, @asciidoctor_options
-        page = Page.new @confluence_options[:space_key], @confluence_options[:title], document, @confluence_options[:page_id]
+        page = Page.new @confluence_options[:space_key], @confluence_options[:title], document, @confluence_options[:page_id], @confluence_options[:parent_id]
         api = ConfluenceAPI.new @confluence_options, page
 
         begin

@@ -45,7 +45,7 @@ Here is the list of arguments that can used with this gem
 
 |spaceKey
 |yes
-|The space wihtin the page will be created
+|The space within which the page will be created
 |'AS' in http://confluence.mydomain/display/AS/
 
 |title

@@ -19,6 +19,7 @@ module Asciidoctor
         @asciidoctor_options = options
         @asciidoctor_options[:to_file] = false
         @asciidoctor_options[:header_footer] = false
+        @asciidoctor_options[:backend] = 'xhtml'
 
         if (options[:input_files].is_a? ::Array) && (options[:input_files].length == 1)
           @input_file = options[:input_files][0]

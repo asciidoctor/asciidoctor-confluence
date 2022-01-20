@@ -72,6 +72,12 @@ Here is the list of arguments that can used with this gem
 |no
 |The ID of the page you want to update, if it's not provided it will be determined using the space key and the title
 |
+
+|insecure
+|false
+|Disable SSL certificate verification. It may be usefull if server uses self-signed certificate.
+No values are required for this option
+|
 |===
 
 

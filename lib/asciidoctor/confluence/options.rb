@@ -12,7 +12,7 @@ module Asciidoctor
 
       def initialize(options = {})
         super options
-        self[:confluence] = options[:confluence] || {:update => false}
+        self[:confluence] = options[:confluence] || {:update => false, :insecure => false}
         self[:confluence][:auth] = {} if self[:confluence][:auth].nil?
       end
 
@@ -60,6 +60,10 @@ Usage: asciidoctor-confluence --host HOSTNAME --spaceKey SPACEKEY --title TITLE 
 
           opts.on('--password PASSWORD', 'the password used if credential are need to create the page') do |spaceKey|
             self[:confluence][:auth][:password] = spaceKey
+          end
+
+          opts.on('--insecure', 'disable SSL certificate verification') do
+            self[:confluence][:insecure] = true
           end
 
           opts.on_tail('-h', '--help', 'Show the full helper (including Asciidoctor helper)') do

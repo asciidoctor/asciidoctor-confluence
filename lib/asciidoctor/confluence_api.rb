@@ -8,11 +8,13 @@ module Asciidoctor
       attr_reader :url
       @page
       @auth
+      @verify
 
       def initialize(confluence_options, page)
         @url = build_api_content_url(confluence_options)
         @auth = confluence_options[:auth] unless confluence_options[:auth].nil?
         @page = page
+        @verify = !confluence_options[:insecure]
       end
 
       def build_api_content_url(confluence_options)
@@ -25,6 +27,7 @@ module Asciidoctor
         conn = Faraday.new do |faraday|
           faraday.request :url_encoded
           faraday.adapter Faraday.default_adapter
+          faraday.ssl.verify = @verify
         end
 
         conn.basic_auth(@auth[:username], @auth[:password]) unless @auth.nil?

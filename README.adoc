@@ -1,4 +1,4 @@
-:version: 0.0.2
+:version: 0.0.3
 :asciidoctor-base-version: 1.5.2
 :confluence-version: 5.x
 
@@ -61,6 +61,11 @@ Here is the list of arguments that can used with this gem
 |password
 |no
 |The password associated to the account used to login into Confluence
+|
+
+|bearerAuth
+|no
+|The Authorization Bearer token associated to the account used to login into Confluence
 |
 
 |update

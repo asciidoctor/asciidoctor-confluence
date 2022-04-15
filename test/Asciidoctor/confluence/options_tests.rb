@@ -31,6 +31,14 @@ class OptionsTests < Test::Unit::TestCase
     assert_equal password, options[:confluence][:auth][:password]
   end
 
+  def test_init_options_with_token
+    options = Asciidoctor::Confluence::Options.new
+    token = 'sometoken'
+    options.init_options ['--host', 'http://hostname', '--spaceKey', 'key', '--title', 'title', '--bearerAuth', token, 'file.adoc']
+
+    assert_equal token, options[:confluence][:auth][:token]
+  end
+  
   def test_with_full_options
     args = {:confluence => {:host => 'http://hostname/', :space_key => 'TEST_KEY', :title =>'Test title'}}
     options = Asciidoctor::Confluence::Options.new args

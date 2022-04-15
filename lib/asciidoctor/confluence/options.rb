@@ -61,6 +61,10 @@ Usage: asciidoctor-confluence --host HOSTNAME --spaceKey SPACEKEY --title TITLE 
           opts.on('--password PASSWORD', 'the password used if credential are need to create the page') do |spaceKey|
             self[:confluence][:auth][:password] = spaceKey
           end
+          
+          opts.on('--bearerAuth TOKEN', 'the token used if Bearer Authentication is required to create the page') do |token|
+            self[:confluence][:auth][:token] = token
+          end
 
           opts.on_tail('-h', '--help', 'Show the full helper (including Asciidoctor helper)') do
             $stdout.puts opts, "\n\n"

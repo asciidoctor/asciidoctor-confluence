@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.add_development_dependency 'bundler', '~> 1.7'
+  spec.add_development_dependency 'bundler', '~> 2.3.7'
   spec.add_development_dependency 'rake',  '~> 10.4', '>= 10.4.2'
   spec.add_development_dependency 'test-unit',  '~> 3.0', '>= 3.0.9'
   spec.add_development_dependency 'rspec', '~> 3.1.0', '>= 3.1'
@@ -26,6 +26,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'webmock', '~> 1.20.4', '>= 1.20'
 
   spec.add_runtime_dependency 'asciidoctor', '~> 1.5.2', '>= 1.5'
-  spec.add_runtime_dependency 'faraday', '~> 0.9.1', '>= 0.9'
+  spec.add_runtime_dependency 'faraday', '~> 2.7', '>= 2.7'
   spec.add_runtime_dependency 'json', '~> 1.8.2', '>= 1.8.2'
 end

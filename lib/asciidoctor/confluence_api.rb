@@ -22,13 +22,11 @@ module Asciidoctor
       end
 
       def create_connection
-        conn = Faraday.new do |faraday|
-          faraday.request :url_encoded
-          faraday.adapter Faraday.default_adapter
-        end
-
-        conn.basic_auth(@auth[:username], @auth[:password]) unless @auth.nil?
-        conn
+        Faraday.new do |faraday|
+                  faraday.request :authorization, :basic, @auth[:username], @auth[:password] unless @auth.nil?
+                  faraday.request :url_encoded
+                  faraday.adapter Faraday.default_adapter
+                end
       end
 
       def create_or_update_page(update=false, page_id=nil)
